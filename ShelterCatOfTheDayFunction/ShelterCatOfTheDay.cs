@@ -18,7 +18,7 @@ namespace ShelterCatOfTheDayFunction
         private static readonly string PoznanShelterCatsWebsite = "http://schronisko.com/adopcje/koty/";
 
         [FunctionName("ShelterCatOfTheDay")]
-        public static async Task Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, TraceWriter log)
+        public static async Task Run([TimerTrigger("0 0 12 * * 1-5")]TimerInfo myTimer, TraceWriter log)
         {
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
 
@@ -97,7 +97,7 @@ namespace ShelterCatOfTheDayFunction
         private static string SelectCat(string[] catPortfolioDetailsLinks)
         {
             var random = new Random();
-            var randomIndex = random.Next(0, catPortfolioDetailsLinks.Length);
+            var randomIndex = random.Next(0, catPortfolioDetailsLinks.Length - 1);
 
             return catPortfolioDetailsLinks[randomIndex];
         }
