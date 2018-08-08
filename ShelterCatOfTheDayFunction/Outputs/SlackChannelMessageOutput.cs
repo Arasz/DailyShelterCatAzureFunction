@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShelterCatOfTheDayFunction.Outputs
 {
-    public class SlackChannelMessageOutput : IExternalOutput<HttpResponseMessage, CatPortfolio>
+    public class SlackChannelMessageOutput : IExternalOutput<HttpResponseMessage, Portfolio>
     {
         private readonly string _webhookUrl;
 
@@ -15,7 +15,7 @@ namespace ShelterCatOfTheDayFunction.Outputs
             _webhookUrl = webhookUrl ?? throw new ArgumentNullException(nameof(webhookUrl));
         }
 
-        public Task<HttpResponseMessage> SendToExternalOutput(CatPortfolio data)
+        public Task<HttpResponseMessage> SendToExternalOutput(Portfolio data)
         {
             var httpClient = new HttpClient();
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ShelterCatOfTheDayFunction.SiteParsers
 {
-    public class CatPortfolioDetailsSiteParser : ISiteParser<CatPortfolio>
+    public class CatPortfolioDetailsSiteParser : ISiteParser<Portfolio>
     {
         private readonly IBrowsingContext _browsingContext;
 
@@ -14,13 +14,13 @@ namespace ShelterCatOfTheDayFunction.SiteParsers
             _browsingContext = browsingContext ?? throw new ArgumentNullException(nameof(browsingContext));
         }
 
-        public async Task<CatPortfolio> ParseSiteToDataObject(string url)
+        public async Task<Portfolio> ParseSiteToDataObject(string url)
         {
             var catPortfolioDocument = await _browsingContext
                 .OpenAsync(url)
                 .ConfigureAwait(false);
 
-            var catPortfolio = new CatPortfolio
+            var catPortfolio = new Portfolio
             {
                 Name = catPortfolioDocument
                     .QuerySelector("div.wpb_wrapper h2").TextContent,
