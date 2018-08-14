@@ -1,6 +1,6 @@
 namespace ShelterCatOfTheDayFunction.Models
 {
-    public class CatPortfolio
+    public class Portfolio
     {
         public string ImageLink { get; set; }
 
