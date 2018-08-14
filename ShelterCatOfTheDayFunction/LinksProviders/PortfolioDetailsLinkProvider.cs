@@ -5,12 +5,13 @@ using AngleSharp;
 
 namespace ShelterCatOfTheDayFunction.LinksProviders
 {
-    public class DogPortfolioDetailsLinkProvider : IDetailLinksProvider
+    public class PortfolioDetailsLinkProvider : IDetailLinksProvider
     {
         private readonly IBrowsingContext _browsingContext;
         private readonly Url _websiteUrl;
+        private const string PortfolioItemsSelector = "div.w-grid-list article.w-grid-item div.w-grid-item-h a.w-grid-item-anchor";
 
-        public DogPortfolioDetailsLinkProvider(IBrowsingContext browsingContext, Url websiteUrl)
+        public PortfolioDetailsLinkProvider(IBrowsingContext browsingContext, Url websiteUrl)
         {
             _browsingContext = browsingContext ?? throw new ArgumentNullException(nameof(browsingContext));
             _websiteUrl = websiteUrl ?? throw new ArgumentNullException(nameof(websiteUrl));
@@ -22,8 +23,7 @@ namespace ShelterCatOfTheDayFunction.LinksProviders
                .OpenAsync(_websiteUrl)
                .ConfigureAwait(false);
 
-            var portfolioItemsSelector = "div.w-grid-list article.w-grid-item div.w-grid-item-h a.w-grid-item-anchor";
-            var portfolioItems = document.QuerySelectorAll(portfolioItemsSelector);
+            var portfolioItems = document.QuerySelectorAll(PortfolioItemsSelector);
 
             var portfolioDetailsLinks = portfolioItems
                .Select(m => m.GetAttribute("href"))

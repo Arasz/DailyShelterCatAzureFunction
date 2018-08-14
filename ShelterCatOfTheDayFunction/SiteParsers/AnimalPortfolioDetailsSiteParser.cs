@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace ShelterCatOfTheDayFunction.SiteParsers
 {
-    public class CatPortfolioDetailsSiteParser : ISiteParser<Portfolio>
+    public class AnimalPortfolioDetailsSiteParser : ISiteParser<Portfolio>
     {
         private readonly IBrowsingContext _browsingContext;
 
-        public CatPortfolioDetailsSiteParser(IBrowsingContext browsingContext)
+        public AnimalPortfolioDetailsSiteParser(IBrowsingContext browsingContext)
         {
             _browsingContext = browsingContext ?? throw new ArgumentNullException(nameof(browsingContext));
         }

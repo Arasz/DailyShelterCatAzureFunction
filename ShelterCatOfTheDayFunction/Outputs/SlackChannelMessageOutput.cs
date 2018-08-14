@@ -26,7 +26,7 @@ namespace ShelterCatOfTheDayFunction.Outputs
                     new
                     {
                         color= "#36a64f",
-                        title = $"Today's shelter cat of the day is {data.Name}!",
+                        title = $"Today's shelter animal of the day is {data.Name}!",
                         title_link = data.ProfileLink,
                         text = data.Description,
                         image_url = data.ImageLink
